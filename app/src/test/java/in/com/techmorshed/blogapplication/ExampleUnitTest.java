@@ -1,4 +1,4 @@
-package in.tvac.akshayejh.photoblog;
+package in.com.techmorshed.blogapplication;
 
 import org.junit.Test;
 

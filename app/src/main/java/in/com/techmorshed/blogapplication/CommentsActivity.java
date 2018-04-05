@@ -1,4 +1,4 @@
-package in.tvac.akshayejh.photoblog;
+package in.com.techmorshed.blogapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

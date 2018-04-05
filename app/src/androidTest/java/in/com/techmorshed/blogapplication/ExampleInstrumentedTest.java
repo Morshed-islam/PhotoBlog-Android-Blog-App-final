@@ -1,4 +1,4 @@
-package in.tvac.akshayejh.photoblog;
+package in.com.techmorshed.blogapplication;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

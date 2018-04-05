@@ -1,12 +1,11 @@
-package in.tvac.akshayejh.photoblog;
+package in.com.techmorshed.blogapplication;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +26,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapter.ViewHolder> {
 
     public List<BlogPost> blog_list;
+    private BlogPost blogPost;
     public Context context;
 
     private FirebaseFirestore firebaseFirestore;
@@ -75,7 +72,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         String image_url = blog_list.get(position).getImage_url();
         String thumbUri = blog_list.get(position).getImage_thumb();
-        holder.setBlogImage(image_url, thumbUri);
+        holder.setBlogImage(image_url,thumbUri);
 
         String user_id = blog_list.get(position).getUser_id();
         //User Data will be retrieved here...
@@ -106,7 +103,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             holder.setTime(dateString);
         } catch (Exception e) {
 
-            Toast.makeText(context, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(context, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
         }
 
@@ -186,6 +183,20 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
+
+        holder.cL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent nextClass = new Intent(context,DetailsActivity.class);
+
+                nextClass.putExtra("title",blog_list.get(holder.getPosition()).getDesc());
+                nextClass.putExtra("imgThumb",blog_list.get(holder.getPosition()).getImage_thumb());
+                nextClass.putExtra("imgUrl",blog_list.get(holder.getPosition()).getImage_url());
+
+                context.startActivity(nextClass);
+            }
+        });
+
     }
 
 
@@ -210,6 +221,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         private ImageView blogCommentBtn;
 
+        private ConstraintLayout cL;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -217,6 +230,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
             blogLikeBtn = mView.findViewById(R.id.blog_like_btn);
             blogCommentBtn = mView.findViewById(R.id.blog_comment_icon);
+            cL = mView.findViewById(R.id.main_constraint);
+
 
         }
 

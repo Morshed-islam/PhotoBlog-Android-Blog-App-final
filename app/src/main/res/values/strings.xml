@@ -20,6 +20,8 @@
     <string name="new_post_btn_hint">Post Blog</string>
     <string name="bottom_home_text">Home</string>
     <string name="bottom_notification_text">Notification</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">close</string>
     <string name="bottom_ac_text">Account</string>
 
     <!-- TODO: Remove or change this placeholder text -->

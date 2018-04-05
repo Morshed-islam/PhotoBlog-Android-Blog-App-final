@@ -1,7 +1,5 @@
-package in.tvac.akshayejh.photoblog;
+package in.com.techmorshed.blogapplication;
 
-
-import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.Date;
 
@@ -10,7 +8,9 @@ public class BlogPost extends BlogPostId {
     public String user_id, image_url, desc, image_thumb;
     public Date timestamp;
 
-    public BlogPost() {}
+    public BlogPost() {
+
+    }
 
     public BlogPost(String user_id, String image_url, String desc, String image_thumb, Date timestamp) {
         this.user_id = user_id;
